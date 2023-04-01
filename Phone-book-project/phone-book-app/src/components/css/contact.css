@@ -1,0 +1,396 @@
+
+.navbar{
+    height: 10vh;
+    display: flex;
+    font-size: 20px;
+    font-weight: 600;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-family: 'Alkatra', cursive;
+}
+
+.addContact{
+    background-color: grey;
+    width: 20vw;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Alkatra', cursive;
+}
+
+.content > h1{
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Alkatra', cursive;
+}
+
+.logout{
+    background-color: grey;
+    width: 10vw;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Alkatra', cursive;
+}
+
+#form{
+    display: none;
+    height: 25vh;
+    width: 30vw;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    position: absolute;
+    margin-left: 35%;
+    background-color: white;
+    font-family: 'Alkatra', cursive;
+}
+#form>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#form>div>label{
+    font-size: 20px;
+   margin-top: 20px;
+   width: 170px;
+
+}
+
+#form>div>input::placeholder{
+    padding-left: 10px;
+}
+
+#form>div>input{
+    margin-top: 24px;
+    padding-left: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 170px;
+}
+
+.contactAdd{
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 10vw;
+    background-color: black;
+    color: white;
+    
+}
+
+#close{
+     border-radius: 5px;
+    display: flex;
+    width: 20px;
+    float: right;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+}
+
+#contact-table{
+
+    height: 50vh;
+}
+
+#table{
+    font-size: 20px;
+    font-family: 'Alkatra', cursive;
+}
+#tr{
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+}
+
+
+#tbody{
+    display: grid;
+    row-gap: 10px;
+}
+
+#trtr{
+   
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+}
+
+.delete{
+
+    width: 6vw;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+}
+
+.edit{
+    width: 6vw;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+}
+
+#updateform{
+    font-family: 'Alkatra', cursive;
+    display: none;
+    height: 25vh;
+    width: 30vw;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    position: absolute;
+    margin-left: 35%;
+    background-color: white;
+}
+#inner-form-update{
+ 
+    margin-top: 30px;
+    height: 40px;
+}
+#inner-form-add{
+    margin-top: 30px;
+    height: 40px;
+}
+
+#updateform>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#updateform>div>label{
+    font-size: 20px;
+   margin-top: 20px;
+   width: 170px;
+}
+
+#updateform>div>input::placeholder{
+    padding-left: 10px;
+}
+
+#updateform>div>input{
+    margin-top: 24px;
+    padding-left: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 170px;
+}
+
+.th1{
+    width: 15%;
+}
+.td1{
+    width: 15%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 30px;
+}
+
+.th2{
+  width: 20%;
+ 
+}
+.td2{
+width: 25%;
+padding-left: 20px;
+}
+
+#delete-modal{
+    display: none;
+    height: 15vh;
+    width: 30vw;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    position: absolute;
+    margin-left: 35%;
+    background-color: white;
+    font-family: 'Alkatra', cursive;
+}
+
+#delete-modal>h1{
+    font-size: 20px;
+}
+
+#confirmDelete{
+    margin-right: 10px;
+    margin-top: 20px;
+    width: 8vw;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+}
+
+#cancelDelete{
+    
+    width: 8vw;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+
+    .navbar{
+        height: 10vh;
+        font-size: 20px;
+        gap: 3vh;
+    }
+
+    .navbar > h1{
+        font-size: 20px;
+    }
+    
+    .addContact{
+        width: 40vw;
+    }
+    
+    .logout{
+        width: 20vw;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    
+    #form{
+    
+        height: 28vh;
+        width: 100%;
+     margin: auto;
+    }
+    
+    
+    #form>div>label{
+        font-size: 15px;
+    width: 120px;
+    }
+    
+#inner-form-update{
+ 
+    margin-top: 30px;
+    height: 40px;
+}
+#inner-form-add{
+    margin-top: 30px;
+    height: 40px;
+}
+   
+    
+    
+    .contactAdd{
+        width: 30vw;
+        
+    }
+    
+    #close{
+         border-radius: 5px;
+        display: flex;
+        width: 20px;
+        float: right;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        cursor: pointer;
+    }
+    
+    
+    #table{
+        font-size: 15px;
+      
+    }
+    
+    
+    #tbody{
+        display: grid;
+        row-gap: 10px;
+    }
+    
+    #trtr{
+       
+        display: flex;
+        width: 100vw;
+        justify-content: space-around;
+    }
+    
+    .delete{
+    
+        width: 15vw;
+        height: 4vh;
+    }
+    
+    .edit{
+        width: 15vw;
+        height: 4vh;
+       
+    }
+    
+    #updateform{
+     
+        height: 28vh;
+        width: 100%;
+     margin: auto;
+    }
+
+    #updateform>div>input{
+        padding-left: 5px;
+    }
+    
+    #updateform>div>label{
+        font-size: 15px;
+        width: 120px;
+    }
+    .contactAdd{
+        width: 40vw;
+    }
+   
+    .td1{
+        font-size: 12px;
+        padding-left: 0px;
+    }
+
+    .td2{
+        font-size: 12px;
+        padding-left: 0px;
+    }
+
+    #delete-modal{
+        height: 15vh;
+        width: 100%;
+     margin: auto;
+    }
+    
+#confirmDelete{
+    width: 20vw;
+  
+}
+
+#cancelDelete{
+    
+    width: 20vw;
+   
+}
+
+#delete-modal>h1{
+    font-size: 15px;
+}
+
+
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+ 
+    .delete{
+    
+        width: 12vw;
+        height: 4vh;
+    }
+    
+    .edit{
+        width: 12vw;
+        height: 4vh;
+       
+    }
+
+
+}

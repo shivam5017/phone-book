@@ -1,0 +1,142 @@
+
+
+.signup-form{
+
+    height: 60vh;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    width: 40vw;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-family: 'Alkatra', cursive;
+}
+
+.signup-form > div{
+    text-align: left;
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    padding-left: 10vh;
+}
+
+.signup-form > h1{
+    font-size: 30px;
+
+}
+
+.signup-form > div> label{
+    font-size: 20px;
+}
+
+.signup-form >div > input{
+    border: 1px solid grey;
+    width: 30vw;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+
+
+.Header{
+    font-size: 50px;
+    font-weight: 600;
+}
+
+
+.button{
+    background-color: grey;
+    width: 12vw;
+    margin: auto;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+  
+.signup-form{
+    height: 70vh;
+    display: grid;
+    width: 100%;
+    margin-top: 50px;
+}
+
+
+.signup-form > div{
+    text-align: left;
+
+    padding-left: 5vh;
+}
+
+
+
+.signup-form > div> label{
+    font-size: 15px;
+   
+}
+
+.signup-form >div > input{
+    border: 1px solid grey;
+    width: 90%;
+    padding-left: 5px;
+}
+
+
+
+.Header{
+    font-size: 30px;
+}
+
+
+.button{
+    width: 50%;
+}
+
+
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    
+.signup-form{
+    height: 50vh;
+    display: grid;
+    width: 60%;
+    margin-top: 50px;
+}
+
+
+.signup-form > div{
+    text-align: left;
+
+    padding-left: 5vh;
+}
+
+
+
+.signup-form > div> label{
+    font-size: 20px;
+   
+}
+
+.signup-form >div > input{
+    border: 1px solid grey;
+    width: 50%;
+    padding-left: 5px;
+}
+
+
+
+.Header{
+    font-size: 30px;
+}
+
+
+.button{
+    width: 50%;
+}
+
+  }
+  
