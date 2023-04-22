@@ -4,8 +4,7 @@ import {signup} from "../redux/login/login.action"
 import {useToastMsg} from "../custom-hooks/useToast";
 import "./css/signup.css"
 import {Link, useNavigate} from "react-router-dom"
-import { Spinner } from '@chakra-ui/react'
-
+import { Button } from '@chakra-ui/react'
 const Signup = () => {
    const [loading,setLoading]=useState(false)
      const [email,setEmail]=useState("")
@@ -31,7 +30,10 @@ const Signup = () => {
          if(confirmpassword.length < 6)  return Toast("ConfirmPassword length must be greater than or equal to 6", "error");
          if(confirmpassword===password){
             setLoading(true)
-            dispatch(signup({ username: name, email,password }, Toast,navigate));
+           await dispatch(signup({ username: name, email,password }, Toast,navigate));
+            
+               setLoading(false)
+             
          }else{
             setLoading(false)
             return Toast("ConfirmPassword doesn't match with password", "error");
@@ -60,12 +62,7 @@ const Signup = () => {
       <label>Confirm Password: </label>
       <input placeholder='Confirm Password...' type="password" onChange={(e)=>setConfirmpassword(e.target.value)}/>
       </div>
-      
-      <button type="submit" className="button" >
-            {
-              loading?<Spinner />:"Create Account"
-            }
-           </button>
+      <Button isLoading={loading} type='submit' className='button' colorScheme='grey' variant='solid' onClick={Register}>Create Account</Button>
       <h3>Already Have an Account? <Link to='/'style={{color: 'blue',textDecoration:"underline" }} >Login</Link></h3>
    </form>
    </>

@@ -12,7 +12,6 @@ export const login = (cred, Toast,navigate) => async (dispatch) => {
     try {
         let res = await axios.post(`${api}/user/login`, cred);
         let data = res.data;
-
         if (data.status === 200) {
             let { credentials, message } = data;
            
@@ -46,12 +45,16 @@ export const signup = (cred, Toast,navigate) => async (dispatch) => {
     try {
         let res = await axios.post(`${api}/user/register`, cred);
         let data = await res.data;
-        console.log(data);
+        console.log(data)
         // if registration is succesfull
         if (data.status === 200) {
-            dispatch({ type: AUTH_SIGNUP });
-            navigate("/")
-            Toast(data.message, "success");
+            let { credentials, message } = data;
+            dispatch({ type: AUTH_SIGNUP, payload: credentials  });
+            navigate("/contact")
+            
+
+            sessionStorage.setItem("user", JSON.stringify(credentials));
+            Toast(message, "success");
         }
         // if user already exists
         else {
@@ -60,7 +63,6 @@ export const signup = (cred, Toast,navigate) => async (dispatch) => {
         }
     } catch (error) {
         // server or internal error
-        console.log(error)
         dispatch({ type: AUTH_ERROR });
         Toast(error.response?.data?.message || "something went wrong", "error");
     }

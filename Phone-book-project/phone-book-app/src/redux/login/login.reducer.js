@@ -54,6 +54,8 @@ export const loginReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 loading: false,
                 credentials:payload,
+                auth:true,
+                token: payload.token,
             }
         }
 

@@ -8,29 +8,32 @@ import {logout} from "../redux/login/login.action"
 import { useNavigate } from 'react-router-dom';
 import { add,get } from '../redux/contact/contact.action';
 import {remove,update} from "../redux/contact/contact.action"
-import { Spinner } from '@chakra-ui/react'
-
-import { Navigate } from 'react-router-dom'
-
-
+import { Box } from '@chakra-ui/react'
+import { Button,useColorModeValue } from '@chakra-ui/react'
+import { useColorMode} from '@chakra-ui/react';
+  import {BsFillMoonFill,BsFillSunFill} from "react-icons/bs"
 
 const Contact = () => {
  
   const [data,setData]=useState({})
    const user=useSelector(store=>store.login.credentials)
-
+  const [deleteUser,setDeleteUser]=useState("")
   const output=useSelector(store=>store.contact.contacts)
 
-  console.log(output)
+  // loading states
   const [loading,setLoading]=useState(false)
+  const [confirm,setConfirm]=useState(false)
+  const [updateLoader,setUpdateLoader]=useState(false)
+  // loading states end
    const ref=useRef()
    const dispatch=useDispatch()
   const Toast=useToastMsg()
   const navigate=useNavigate()
   const [username,setUsername]=useState("")
-  const [phone,setPhone]=useState(+"")
+  const [phone,setPhone]=useState("")
   const [changeid,setChangeid]=useState("")
   const [deleteId,setDeleteId]=useState("")
+
   const [initial,setInitial]=useState(
     {
       username:"",
@@ -68,6 +71,7 @@ const emailInput = useCallback((inputElement) => {
     const update=ref.current.current;
     update.style.display="block"
     setChangeid(event.target.id)
+   
   }
   
   
@@ -84,10 +88,8 @@ const emailInput = useCallback((inputElement) => {
   
   const contactAdd=async(userID)=>{
       setLoading(true)
-   dispatch(add({username,phone},Toast))
-   setTimeout(()=>{
-    setLoading(false)
-  },2000)
+  await dispatch(add({username,phone},Toast))
+  setLoading(false)
    closeform()
    setUsername("")
    setPhone("")
@@ -100,17 +102,19 @@ const emailInput = useCallback((inputElement) => {
   }
 
   const signout=async()=>{
+
     if (user.email) dispatch(logout(user.email, Toast));
+   
     setData({})
     navigate("/")
   }
-
   
-
+  
   const deleteContact=async(event,id)=>{
-   
+  setDeleteUser(event.target.name)
     document.getElementById("delete-modal").style.display="block"
     setDeleteId(event.target.id)
+    
   }
   const onInputChange= e =>{
     setInitial({...initial,[e.target.name]:e.target.value})
@@ -122,12 +126,12 @@ const emailInput = useCallback((inputElement) => {
     username:initial.username,
     phone:initial.phone,
    }
-   setLoading(true)
-    dispatch(update(changeid,value,Toast))
+   setUpdateLoader(true)
+   await dispatch(update(changeid,value,Toast))
+   setUpdateLoader(false)
     closeupdateform()
-    setTimeout(()=>{
-      setLoading(false)
-    },2000)
+   
+ 
     
   }
  
@@ -135,25 +139,31 @@ const emailInput = useCallback((inputElement) => {
  
   const confirmDelete=async()=>{
  
-    setLoading(true)
-    dispatch(remove(deleteId ,Toast))
-    setTimeout(()=>{
-      setLoading(false)
-    },2000)
+    setConfirm(true)
+   await dispatch(remove(deleteId ,Toast))
+   setConfirm(false)
+ 
     document.getElementById("delete-modal").style.display="none"
   }
 
   const cancelDelete=()=>{
     document.getElementById("delete-modal").style.display="none"
     setDeleteId("")
+    setDeleteUser('')
+   
   }
-
+  const { colorMode, toggleColorMode } = useColorMode()
+  const bg = useColorModeValue('gray.800', 'white')
+  const color = useColorModeValue('white', 'gray.800')
 
   return (
     <div className='Main-container'>
       <nav className='navbar'>
          <h1>Phone Book</h1>
          <h3>User:{data.username}</h3>
+         <Button onClick={toggleColorMode}>
+       {colorMode === 'light' ? <BsFillMoonFill />:<BsFillSunFill />}
+      </Button>
          <button className='logout' onClick={signout}>Logout</button>
       </nav>
       <div className='content'>
@@ -161,7 +171,7 @@ const emailInput = useCallback((inputElement) => {
         <button className='addContact' onClick={addContact}>Add Contact</button>
       </div>
       {/* form part */}
-      <div ref={ref} id="form">
+      <Box ref={ref} id="form" color={bg} backgroundColor={color}>
         <div id="close" onClick={closeform}>X</div>
       <div id="inner-form-add">
            <label>Enter Name : </label>
@@ -171,10 +181,10 @@ const emailInput = useCallback((inputElement) => {
            <label>Enter Phone No : </label>
            <input type="number" placeholder='Phone No.' id="phone" value={phone} onChange={(e)=>setPhone(e.target.value)}/>
     </div>
-    <button className='contactAdd' onClick={contactAdd}>Add Contact</button>
-    </div>
+    <Button isLoading={loading} type='submit' className='contactAdd' colorScheme='grey' variant='solid' onClick={contactAdd}>Add Contact</Button>
+    </Box>
     {/* update form */}
-    <div ref={ref.current} id="updateform">
+    <Box ref={ref.current} id="updateform"  color={bg} backgroundColor={color}>
         <div id="close" onClick={closeupdateform}>X</div>
       <div id="inner-form-update">
            <label>Enter Name : </label>
@@ -184,14 +194,15 @@ const emailInput = useCallback((inputElement) => {
            <label>Enter Phone No : </label>
            <input type="number" placeholder='Phone No.' id="phone" name="phone" value={initial.phone} onChange={e=>onInputChange(e)} />
     </div>
-    <button className='contactAdd' onClick={updateContact}>Update Contact</button>
-    </div>
+    <Button isLoading={updateLoader} className='contactAdd'  colorScheme='grey' variant='solid'  onClick={updateContact}>Update Contact</Button>
+    </Box>
     {/* delete modal */}
-    <div id="delete-modal" >
+    <Box id="delete-modal" color={bg} backgroundColor={color} >
+       <h1>You are trying to Delete: {deleteUser}</h1>
         <h1>Are you sure you want to Delete?</h1>
-         <button id="confirmDelete" onClick={confirmDelete}>Confirm</button>
-         <button  id="cancelDelete" onClick={cancelDelete}>Cancel</button>
-    </div>
+         <Button isLoading={confirm} id="confirmDelete" marginBottom={"20px"} colorScheme='grey' variant='solid' onClick={confirmDelete}>Confirm</Button>
+         <Button  id="cancelDelete"  colorScheme='grey' variant='solid' onClick={cancelDelete}>Cancel</Button>
+    </Box>
     {/* form part done */}
     <div id="table">
     <table>
@@ -210,10 +221,8 @@ const emailInput = useCallback((inputElement) => {
           return<tr key={e?._id} id="trtr">
           <td className='td1'>{e?.username}</td>
           <td className='td2'>{e?.phone}</td>
-          <button onClick={editContact} id={e?._id} contact={e?.phone} name={e?.username}   className="edit">{loading?<Spinner />:"Edit"}</button>
-          <button onClick={deleteContact} id={e?._id} className="delete">
-            {loading?<Spinner />:"Delete"}
-          </button>
+          <button onClick={editContact} id={e?._id} contact={e?.phone} name={e?.username}   className="edit">Edit</button>
+          <button onClick={deleteContact} id={e?._id} name={e?.username} contact={e?.phone} className="delete">Delete</button>
         </tr>
 })
         

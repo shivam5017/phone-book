@@ -17,10 +17,10 @@ export const add = (value, Toast) => async (dispatch) => {
             }
         });
         let data = res.data;
-           console.log(data)
+          
         if (data.status === 200) {
             let { contacts, message } = data;
-            console.log(contacts)
+            
             dispatch({ type: CONTACT_ADD , payload: contacts });
             dispatch(get(),Toast)
            return Toast(message, "success");
