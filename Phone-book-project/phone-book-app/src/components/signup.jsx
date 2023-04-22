@@ -63,7 +63,7 @@ const Signup = () => {
       <input placeholder='Confirm Password...' type="password" onChange={(e)=>setConfirmpassword(e.target.value)}/>
       </div>
       <Button isLoading={loading} type='submit' className='button' colorScheme='grey' variant='solid' onClick={Register}>Create Account</Button>
-      <h3>Already Have an Account? <Link to='/'style={{color: 'blue',textDecoration:"underline" }} >Login</Link></h3>
+      <h3>Already Have an Account? <Link to='/'style={{color: '#3e99bc',textDecoration:"underline" }} >Login</Link></h3>
    </form>
    </>
   )

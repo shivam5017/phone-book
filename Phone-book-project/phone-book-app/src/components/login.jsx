@@ -53,7 +53,7 @@ const emailInput = useCallback((inputElement) => {
            </div>
            
           <Button isLoading={loading} type='submit' className='button' colorScheme='grey' variant='solid' onClick={Signin}>Login</Button>
-           <h3>Don't have an account? <Link to='/signup'style={{color: 'blue',textDecoration:"underline" }} >Signup</Link></h3>
+           <h3>Don't have an account? <Link to='/signup'style={{color:'#3e99bc',textDecoration:"underline" }} >Signup</Link></h3>
   </form>
   </>
   )

@@ -101,16 +101,16 @@
   @media (min-width: 768px) and (max-width: 1024px) {
     
 .signup-form{
-    height: 50vh;
+    height: 80vh;
     display: grid;
     width: 60%;
     margin-top: 50px;
+
 }
 
 
 .signup-form > div{
     text-align: left;
-
     padding-left: 5vh;
 }
 
@@ -123,7 +123,7 @@
 
 .signup-form >div > input{
     border: 1px solid grey;
-    width: 50%;
+    width: 90%;
     padding-left: 5px;
 }
 
@@ -140,3 +140,46 @@
 
   }
   
+
+  @media (min-width: 110px) and (max-width: 319px){
+  
+    .signup-form{
+        height: 70vh;
+        display: grid;
+        width: 100%;
+        margin-top: 50px;
+    }
+    
+    
+    .signup-form > div{
+        text-align: left;
+    
+        padding-left: 5vh;
+    }
+    
+    
+    
+    .signup-form > div> label{
+        font-size: 15px;
+       
+    }
+    
+    .signup-form >div > input{
+        border: 1px solid grey;
+        width: 90%;
+        padding-left: 5px;
+    }
+    
+    
+    
+    .Header{
+        font-size: 30px;
+    }
+    
+    
+    .button{
+        width: 50%;
+    }
+    
+
+  }

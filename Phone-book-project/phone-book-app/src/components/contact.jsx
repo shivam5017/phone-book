@@ -181,7 +181,7 @@ const emailInput = useCallback((inputElement) => {
            <label>Enter Phone No : </label>
            <input type="number" placeholder='Phone No.' id="phone" value={phone} onChange={(e)=>setPhone(e.target.value)}/>
     </div>
-    <Button isLoading={loading} type='submit' className='contactAdd' colorScheme='grey' variant='solid' onClick={contactAdd}>Add Contact</Button>
+    <Button isLoading={loading} type='submit' style={{color:"white"}} className='contactAdd' colorScheme='grey' variant='solid' onClick={contactAdd}>Add Contact</Button>
     </Box>
     {/* update form */}
     <Box ref={ref.current} id="updateform"  color={bg} backgroundColor={color}>
@@ -194,14 +194,14 @@ const emailInput = useCallback((inputElement) => {
            <label>Enter Phone No : </label>
            <input type="number" placeholder='Phone No.' id="phone" name="phone" value={initial.phone} onChange={e=>onInputChange(e)} />
     </div>
-    <Button isLoading={updateLoader} className='contactAdd'  colorScheme='grey' variant='solid'  onClick={updateContact}>Update Contact</Button>
+    <Button isLoading={updateLoader} className='contactAdd'  colorScheme='grey' variant='solid'  style={{color:"white"}}  onClick={updateContact}>Update Contact</Button>
     </Box>
     {/* delete modal */}
     <Box id="delete-modal" color={bg} backgroundColor={color} >
        <h1>You are trying to Delete: {deleteUser}</h1>
         <h1>Are you sure you want to Delete?</h1>
-         <Button isLoading={confirm} id="confirmDelete" marginBottom={"20px"} colorScheme='grey' variant='solid' onClick={confirmDelete}>Confirm</Button>
-         <Button  id="cancelDelete"  colorScheme='grey' variant='solid' onClick={cancelDelete}>Cancel</Button>
+         <Button isLoading={confirm} id="confirmDelete" marginBottom={"20px"} colorScheme='grey' variant='solid'  style={{color:"white"}} onClick={confirmDelete}>Confirm</Button>
+         <Button  id="cancelDelete"  colorScheme='grey' variant='solid'  style={{color:"white"}} onClick={cancelDelete}>Cancel</Button>
     </Box>
     {/* form part done */}
     <div id="table">
